@@ -1,185 +1,867 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Andres Vargas | Data Scientist</title>
-  <meta name="description" content="Data Scientist portfolio: NLP, classification, analytics, and end-to-end ML projects." />
+  <title>Andres Vargas Topete | Data Scientist & Machine Learning Portfolio</title>
+  <meta name="description" content="Data science and machine learning portfolio featuring NLP classification, optimization, and multi-agent reinforcement learning projects.">
+  
+  <!-- Configurable SEO Placeholders -->
+  <link rel="canonical" href="<!-- Replace with canonical URL -->">
+  <link rel="icon" href="<!-- Replace with favicon URL -->">
+  <meta name="theme-color" content="#050507">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Andres Vargas Topete | Data Scientist & Machine Learning Portfolio">
+  <meta property="og:description" content="Data science and machine learning portfolio featuring NLP classification, optimization, and multi-agent reinforcement learning projects.">
+  <meta property="og:url" content="<!-- Replace with actual URL -->">
+  <meta property="og:image" content="<!-- Replace with OG preview image URL -->">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
 
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "<!-- Replace with Name -->",
+    "jobTitle": "Data Scientist",
+    "url": "<!-- Replace with Website -->",
+    "sameAs": [
+      "<!-- Replace with LinkedIn URL -->",
+      "<!-- Replace with GitHub URL -->"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "<!-- Replace with Location -->"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "<!-- Replace with Education -->"
+    }
+  }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
-    .hero { padding: 5rem 0; }
-    .tag { font-size: 0.85rem; }
-    .project-card:hover { transform: translateY(-2px); transition: 0.15s ease-in-out; }
-    .muted { color: #6c757d; }
+    :root {
+      --bg-dark: #050507;
+      --card-bg: #0d0d11;
+      --card-border: #222227;
+      --text-main: #ffffff;
+      --text-muted: #d4d4d8;
+      --text-sub: #a1a1aa;
+      --primary-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+      --accent-color: #06b6d4;
+      --accent-glow: rgba(6, 182, 212, 0.15);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Accessibility improvements */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      background: var(--accent-color);
+      color: #000;
+      padding: 10px 15px;
+      z-index: 9999;
+      font-weight: bold;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    section {
+      scroll-margin-top: 6rem;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent-color);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    .fw-extrabold { font-weight: 800; }
+    .tracking-wider { letter-spacing: 0.08em; }
+    
+    .text-muted { color: var(--text-muted) !important; }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .navbar {
+      background: rgba(5, 5, 7, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid #1c1c24;
+      padding: 1.1rem 0;
+      transition: all 0.3s ease;
+    }
+    .navbar-brand {
+      font-size: 1.55rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    .nav-link {
+      color: var(--text-muted) !important;
+      font-weight: 600;
+      padding: 0.5rem 1.1rem !important;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main) !important;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero {
+      padding: 9rem 0 6rem;
+      position: relative;
+    }
+    
+    @media (max-width: 767.98px) {
+      .hero {
+        padding: 6rem 0 3.5rem;
+      }
+      .profile-container {
+        width: 220px !important;
+        height: 220px !important;
+      }
+    }
+
+    .glow-sphere {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, rgba(59, 130, 246, 0.05) 60%, transparent 100%);
+      filter: blur(50px);
+      z-index: -1;
+      top: 5%;
+      right: 5%;
+    }
+
+    .display-gradient {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.15;
+    }
+
+    .hero-lead {
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
+    .profile-container {
+      position: relative;
+      width: 290px;
+      height: 290px;
+      margin: 0 auto;
+    }
+
+    .profile-ring {
+      position: absolute;
+      top: -8px; left: -8px; right: -8px; bottom: -8px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      z-index: 1;
+      opacity: 0.8;
+      animation: pulseGlow 4s infinite alternate;
+    }
+
+    .profile-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--bg-dark);
+      z-index: 2;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.97); opacity: 0.6; }
+      100% { transform: scale(1.03); opacity: 0.9; filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5)); }
+    }
+
+    .btn-gradient {
+      background: var(--primary-gradient);
+      color: #000000;
+      border: none;
+      font-weight: 700;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+    }
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(6, 182, 212, 0.6);
+      color: #000000;
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      font-weight: 600;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .glass-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-color);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
+    }
+
+    .project-img-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #1c1c24;
+    }
+    .project-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .glass-card:hover .project-img {
+      transform: scale(1.03);
+    }
+
+    .tag-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      background: rgba(6, 182, 212, 0.08);
+      color: var(--accent-color);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .skill-card {
+      padding: 2.25rem 2rem;
+      height: 100%;
+    }
+    .skill-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.25rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-link-card {
+      padding: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .contact-link-card i {
+      font-size: 1.85rem;
+      color: var(--accent-color);
+      transition: transform 0.3s ease;
+    }
+    .contact-link-card:hover i {
+      transform: scale(1.18) rotate(-5deg);
+    }
+
+    footer {
+      border-top: 1px solid #1c1c24;
+      padding: 3rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
   </style>
 </head>
+
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-semibold" href="#">Andres Vargas</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="nav" class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="container">
-    <div class="row align-items-center g-4">
-      <div class="col-lg-8">
-        <h1 class="display-5 fw-bold">Data Scientist focused on practical ML systems.</h1>
-        <p class="lead muted mt-3">
-          I build end-to-end machine learning projects. From data preparation to model training, evaluation, and reporting.
-        </p>
-        <div class="d-flex gap-2 mt-4 flex-wrap">
-          <a class="btn btn-primary" href="#projects">View Projects</a>
-          <a class="btn btn-outline-secondary" href="assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
-          <a class="btn btn-outline-secondary" href="https://github.com/andresvarga" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-outline-secondary" href="https://www.linkedin.com/in/andres-vargas-T/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
+  <nav class="navbar navbar-expand-lg sticky-top" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#">Andres Vargas</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+        aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fa-solid fa-bars text-white" aria-hidden="true"></i>
+      </button>
+      <div id="nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto gap-2 mt-3 mt-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#background">Background</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
       </div>
     </div>
-  </div>
-</header>
+  </nav>
 
-<section id="projects" class="py-5 border-top">
-  <div class="container">
-    <div class="d-flex align-items-end justify-content-between gap-3 mb-4">
-        <h2 class="fw-bold mb-1">Projects</h2>
-      <a class="btn btn-sm btn-outline-secondary" href="https://github.com/andresvarga?tab=repositories" target="_blank" rel="noopener">All Repos</a>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 project-card">
-          <div class="card-body">
-            <h5 class="card-title">Phishing Email Detection (NLP)</h5>
-            <p class="card-text muted">
-              Built and evaluated an LSTM-based classifier to label emails as phishing vs safe.
+  <main id="main-content">
+    <header class="hero d-flex align-items-center">
+      <div class="glow-sphere"></div>
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7 text-center text-lg-start">
+            <div class="badge tag-badge mb-3 px-3 py-2" style="font-size:0.85rem">Available for Work</div>
+            <h1 class="display-4 fw-extrabold mb-4">
+              Data Scientist building practical, evaluation-driven machine learning systems.
+            </h1>
+            <p class="hero-lead mb-4">
+              I use Python, statistical analysis, and machine learning to turn complex datasets into reliable models and actionable findings, with a focus on NLP, optimization, and reproducible evaluation.
             </p>
-            <div class="d-flex flex-wrap gap-2 mb-3">
-              <span class="badge text-bg-light border tag">Pytorch</span>
-              <span class="badge text-bg-light border tag">LSTM</span>
-              <span class="badge text-bg-light border tag">NLP</span>
+            <div class="small text-muted mb-5 tracking-wider fw-bold">
+              Seattle, WA &middot; Data Science &middot; Machine Learning &middot; Applied AI
             </div>
-            <ul class="small mb-3">
-              <li><strong>Data:</strong> ~18k emails (Kaggle)</li>
-              <li><strong>Evaluation:</strong> Accuracy, precision/recall, F1</li>
-              <li><strong>Result: 95% accuracy</strong> </li>
-            </ul>
-            <div class="d-flex gap-2 flex-wrap">
-              <a class="btn btn-sm btn-primary" href="https://github.com/andresvarga/Email_Classifcation" target="_blank" rel="noopener">Code</a>
-              <a class="btn btn-sm btn-outline-secondary" href="#" target="_blank" rel="noopener">Report</a>
-              <a class="btn btn-sm btn-outline-secondary" href="#" target="_blank" rel="noopener">Demo</a>
+            <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
+              <a class="btn btn-gradient" href="#projects">View Projects</a>
+              <a class="btn btn-glass" href="https://github.com/andresvarga" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github me-2" aria-hidden="true"></i>View GitHub
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="profile-container">
+              <div class="profile-ring"></div>
+              <!-- Replaced src with .webp per instructions; gracefully handled width/height -->
+              <img class="profile-img" src="assets/img/profile.webp" alt="Andres Vargas Topete" width="290" height="290" decoding="async" fetchpriority="high" />
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<section id="skills" class="py-5 border-top">
-  <div class="container">
-    <h2 class="fw-bold mb-4">Skills</h2>
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-3">
-        <div class="p-4 border rounded-3 h-100">
-          <div class="fw-semibold mb-2">Modeling</div>
-          <div class="muted">Classification, regression, NLP, evaluation, tuning</div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="p-4 border rounded-3 h-100">
-          <div class="fw-semibold mb-2">Python</div>
-          <div class="muted">pandas, NumPy, scikit-learn, TensorFlow/Keras</div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="p-4 border rounded-3 h-100">
-          <div class="fw-semibold mb-2">Data</div>
-          <div class="muted">SQL, cleaning, feature engineering, validation splits</div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="p-4 border rounded-3 h-100">
-          <div class="fw-semibold mb-2">Communication</div>
-          <div class="muted">Dashboards, writeups, metrics, stakeholder framing</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="experience" class="py-5 border-top">
-  <div class="container">
-    <h2 class="fw-bold mb-4">Experience & Education</h2>
-    <div class="row g-4">
-      <div class="col-lg-8">
-        <div class="p-4 border rounded-3">
-          <div class="d-flex justify-content-between flex-wrap gap-2">
-            <div class="fw-semibold">M.S. Data Analytics — WGU</div>
-            <div class="muted">2026</div>
+    <section id="projects" class="py-5">
+      <div class="container py-4">
+        <div class="d-flex align-items-center justify-content-between mb-5 flex-wrap gap-3">
+          <div>
+            <span class="text-uppercase tracking-wider small fw-bold" style="color:var(--accent-color); font-size:0.9rem">Selected Work</span>
+            <h2 class="h1 fw-extrabold mt-1 mb-0">Data Science &amp; Machine Learning Projects</h2>
           </div>
-          <ul class="mt-3 mb-0">
-            <li>Capstone: phishing email classification using an LSTM with rigorous evaluation artifacts.</li>
-            <li>Emphasis on reproducible workflows, Git-based versioning, and clear reporting.</li>
-          </ul>
+          <a class="btn btn-glass btn-sm" href="https://github.com/andresvarga?tab=repositories" target="_blank" rel="noopener noreferrer">
+            All Repositories <i class="fa-solid fa-arrow-up-right-from-square ms-2" aria-hidden="true" style="font-size:0.8rem"></i>
+          </a>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          
+          <!-- Project 1: Phishing NLP -->
+          <div class="col-lg-12">
+            <div class="glass-card p-4 p-md-5">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-5">
+                  <div class="project-img-wrapper d-flex align-items-center justify-content-center" style="background: rgba(6, 182, 212, 0.05); min-height: 300px; height: 100%;">
+                    <!-- Replace with actual project screenshot, e.g. confusion matrix or model architecture -->
+                    <i class="fa-solid fa-chart-bar" style="font-size: 6rem; color: var(--accent-color);" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="tag-badge">PyTorch</span>
+                    <span class="tag-badge">LSTM</span>
+                    <span class="tag-badge">NLP</span>
+                  </div>
+                  <h3 class="fw-bold mb-3 h2">Phishing Email Detection Model</h3>
+                  <p class="text-muted mb-4" style="font-size:1rem; line-height:1.7">
+                    Built an end-to-end LSTM text-classification pipeline for detecting phishing emails. The workflow includes text cleaning, tokenization, padded sequence handling, stratified data splitting, model training, and held-out evaluation across approximately 18,000 emails.
+                  </p>
+                  
+                  <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Test Accuracy</div>
+                        <div style="color:var(--accent-color); font-size: 1.1rem; font-weight: 800;">95.0%</div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Precision</div>
+                        <div style="color:var(--accent-color); font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with verified held-out test metric -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Recall</div>
+                        <div style="color:var(--accent-color); font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with verified held-out test metric -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">F1 Score</div>
+                        <div style="color:var(--accent-color); font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with verified held-out test metric -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4 text-muted" style="font-size: 0.95rem;">
+                    <strong class="text-white d-block mb-2">Methodology:</strong>
+                    <ul class="mb-0 ps-3" style="line-height:1.6">
+                      <li>End-to-end NLP pipeline development</li>
+                      <li>PyTorch model implementation</li>
+                      <li>Reproducible train/validation/test evaluation</li>
+                      <li>Classification-threshold and error analysis</li>
+                    </ul>
+                  </div>
+
+                  <div class="d-flex gap-3 flex-wrap align-items-center">
+                    <a class="btn btn-gradient btn-sm" href="https://github.com/andresvarga/Email_Classifcation" target="_blank" rel="noopener noreferrer">
+                      <i class="fa-solid fa-code me-2" aria-hidden="true"></i>Source Code
+                    </a>
+                    <span class="text-muted small ms-2"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i> Interactive demo in development</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Catan Multi-Agent RL -->
+          <div class="col-lg-12">
+            <div class="glass-card p-4 p-md-5">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-5 order-md-2">
+                  <div class="project-img-wrapper d-flex align-items-center justify-content-center" style="background: rgba(59, 130, 246, 0.05); min-height: 300px; height: 100%;">
+                    <!-- Replace with project screenshot, architecture diagram, or Catan environment visual -->
+                    <i class="fa-solid fa-network-wired" style="font-size: 6rem; color: #3b82f6;" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col-md-7 order-md-1">
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="tag-badge" style="color: #3b82f6; border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.08);">Python</span>
+                    <span class="tag-badge" style="color: #3b82f6; border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.08);">PettingZoo</span>
+                    <span class="tag-badge" style="color: #3b82f6; border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.08);">RL</span>
+                  </div>
+                  <h3 class="fw-bold mb-3 h2">Catan Multi-Agent RL</h3>
+                  <p class="text-muted mb-4" style="font-size:1rem; line-height:1.7">
+                    Built a rules-focused four-player Catan simulation using the PettingZoo AEC interface. The current implementation provides the environment, legal-action handling, turn sequencing, and game-state foundation required for future multi-agent self-play experiments.
+                  </p>
+                  
+                  <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Automated Tests</div>
+                        <div style="color:#3b82f6; font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with verified test count -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Rules Implemented</div>
+                        <div style="color:#3b82f6; font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with verified metric -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Simulation Speed</div>
+                        <div style="color:#3b82f6; font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with verified metric -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">API Status</div>
+                        <div style="color:#3b82f6; font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with verified status -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4 text-muted" style="font-size: 0.95rem;">
+                    <strong class="text-white d-block mb-2">Engineering Foundation:</strong>
+                    <ul class="mb-0 ps-3" style="line-height:1.6">
+                      <li>Multi-agent environment design</li>
+                      <li>PettingZoo AEC interface</li>
+                      <li>Game-state management &amp; legal-action validation</li>
+                      <li>Turn sequencing &amp; foundation for self-play RL</li>
+                    </ul>
+                  </div>
+
+                  <div class="d-flex gap-3 flex-wrap align-items-center">
+                    <a class="btn btn-glass btn-sm" href="https://github.com/andresvarga/catan_solver" target="_blank" rel="noopener noreferrer" style="border-color: rgba(59, 130, 246, 0.3);">
+                      <i class="fa-brands fa-github me-2" aria-hidden="true"></i>Source Code
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Delivery Route Optimization -->
+          <div class="col-lg-12">
+            <div class="glass-card p-4 p-md-5">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-5">
+                  <div class="project-img-wrapper d-flex align-items-center justify-content-center" style="background: rgba(16, 185, 129, 0.05); min-height: 300px; height: 100%;">
+                    <!-- Replace with route map, optimization diagram, or before-and-after result -->
+                    <i class="fa-solid fa-route" style="font-size: 6rem; color: #10b981;" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="tag-badge" style="color: #10b981; border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08);">Python</span>
+                    <span class="tag-badge" style="color: #10b981; border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08);">Optimization</span>
+                    <span class="tag-badge" style="color: #10b981; border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08);">Data Analysis</span>
+                    <span class="tag-badge" style="color: #10b981; border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08);">Algorithm Design</span>
+                  </div>
+                  <h3 class="fw-bold mb-3 h2">Delivery Route Optimization</h3>
+                  <p class="text-muted mb-4" style="font-size:1rem; line-height:1.7">
+                    Developed an optimization-based approach for evaluating delivery assignments and routes under operational constraints. The project focuses on translating a real-world logistics problem into measurable objectives, constraints, and decision rules.
+                  </p>
+                  
+                  <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Objective</div>
+                        <div style="color:#10b981; font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with verified objective -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Constraints</div>
+                        <div style="color:#10b981; font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with verified constraints -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Improvement</div>
+                        <div style="color:#10b981; font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with distance, time, or cost improvement -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="glass-card p-3 rounded-3 text-center h-100">
+                        <div class="small text-muted mb-2" style="font-size:0.75rem; font-weight: 500">Dataset Size</div>
+                        <div style="color:#10b981; font-size: 1.1rem; font-weight: 800;">
+                          <!-- Replace with dataset size -->
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4 text-muted" style="font-size: 0.95rem;">
+                    <strong class="text-white d-block mb-2">Algorithm &amp; Validation:</strong>
+                    <ul class="mb-0 ps-3" style="line-height:1.6">
+                      <!-- Replace with actual baseline and chosen approach -->
+                      <li>Baseline approach: TBD</li>
+                      <li>Selected algorithm: TBD</li>
+                      <li>Validation method: TBD</li>
+                    </ul>
+                  </div>
+
+                  <div class="d-flex gap-3 flex-wrap align-items-center">
+                    <a class="btn btn-glass btn-sm" href="#" target="_blank" rel="noopener noreferrer" style="border-color: rgba(16, 185, 129, 0.3);">
+                      <i class="fa-solid fa-code me-2" aria-hidden="true"></i>Source Code <!-- Add URL -->
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="p-4 border rounded-3 bg-light">
-          <div class="fw-semibold mb-2">Certs / Tools</div>
-          <ul class="mb-0">
-            <li>Git, GitHub/GitLab</li>
-            <li>Jupyter, PyCharm</li>
-            <li>Tableau</li>
-          </ul>
+    </section>
+
+    <section id="skills" class="py-5">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <span class="text-uppercase tracking-wider small fw-bold" style="color:var(--accent-color); font-size:0.9rem">Expertise</span>
+          <h2 class="h1 fw-extrabold mt-1">Core Capabilities</h2>
+        </div>
+
+        <div class="row g-4">
+          <!-- Card 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card">
+              <div class="skill-icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></div>
+              <h4 class="fw-bold mb-3" style="font-size:1.25rem">Machine Learning</h4>
+              <ul class="text-muted ps-3 mb-0" style="line-height:1.65; font-size:0.95rem">
+                <li>Regression &amp; Classification</li>
+                <li>Clustering &amp; Ensemble methods</li>
+                <li>Model comparison</li>
+                <li>Cross-validation</li>
+                <li>Hyperparameter tuning</li>
+                <li>Evaluation and error analysis</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card">
+              <div class="skill-icon"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></div>
+              <h4 class="fw-bold mb-3" style="font-size:1.25rem">NLP &amp; Deep Learning</h4>
+              <ul class="text-muted ps-3 mb-0" style="line-height:1.65; font-size:0.95rem">
+                <li>PyTorch</li>
+                <li>TensorFlow/Keras</li>
+                <li>LSTM networks</li>
+                <li>Text classification</li>
+                <li>Embeddings &amp; Tokenization</li>
+                <li>Sequence preprocessing</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card">
+              <div class="skill-icon"><i class="fa-solid fa-database" aria-hidden="true"></i></div>
+              <h4 class="fw-bold mb-3" style="font-size:1.25rem">Data Analysis &amp; Engineering</h4>
+              <ul class="text-muted ps-3 mb-0" style="line-height:1.65; font-size:0.95rem">
+                <li>Python (pandas, NumPy)</li>
+                <li>SQL</li>
+                <li>Data cleaning</li>
+                <li>Feature engineering</li>
+                <li>Missing-value handling</li>
+                <li>Reproducible pipelines</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card">
+              <div class="skill-icon"><i class="fa-solid fa-chart-column" aria-hidden="true"></i></div>
+              <h4 class="fw-bold mb-3" style="font-size:1.25rem">Visualization &amp; Communication</h4>
+              <ul class="text-muted ps-3 mb-0" style="line-height:1.65; font-size:0.95rem">
+                <li>Matplotlib &amp; Seaborn</li>
+                <li>Tableau</li>
+                <li>Technical reporting</li>
+                <li>Stakeholder-focused metrics</li>
+                <li>Clear presentation of model results</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <section id="background" class="py-5">
+      <div class="container py-4">
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <span class="text-uppercase tracking-wider small fw-bold" style="color:var(--accent-color); font-size:0.9rem">Journey</span>
+            <h2 class="h1 fw-extrabold mt-1 mb-4">Education &amp; Technical Background</h2>
+
+            <div class="timeline mt-5">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 class="fw-bold h5 text-white mb-1">M.S. in Data Analytics</h4>
+                <div class="mb-2" style="color:var(--accent-color); font-weight:600; font-size:0.95rem">
+                  Data Science specialization &mdash; Western Governors University
+                </div>
+              </div>
+
+              <!-- Uncomment and update if B.S. is intended for publication -->
+              <!--
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 class="fw-bold h5 text-white mb-1">B.S. in Software Development</h4>
+                <div class="mb-2" style="color:var(--accent-color); font-weight:600; font-size:0.95rem">
+                  University Name
+                </div>
+              </div>
+              -->
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <span class="text-uppercase tracking-wider small fw-bold" style="color:var(--accent-color); font-size:0.9rem">Tools</span>
+            <h2 class="h1 fw-extrabold mt-1 mb-4">Development Tools</h2>
+            <p class="text-muted mb-4" style="font-size:1rem">A concise overview of the technical environment I use to build reproducible projects:</p>
+
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="glass-card p-3 d-flex align-items-center gap-3 h-100">
+                  <i class="fa-brands fa-python text-teal fs-3" style="color:var(--accent-color)" aria-hidden="true"></i>
+                  <div class="fw-bold small text-white">Python</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="glass-card p-3 d-flex align-items-center gap-3 h-100">
+                  <i class="fa-solid fa-database text-teal fs-3" style="color:var(--accent-color)" aria-hidden="true"></i>
+                  <div class="fw-bold small text-white">SQL &amp; Databases</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="glass-card p-3 d-flex align-items-center gap-3 h-100">
+                  <i class="fa-brands fa-git-alt text-teal fs-3" style="color:var(--accent-color)" aria-hidden="true"></i>
+                  <div class="fw-bold small text-white">Git &amp; GitHub</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="glass-card p-3 d-flex align-items-center gap-3 h-100">
+                  <i class="fa-solid fa-code text-teal fs-3" style="color:var(--accent-color)" aria-hidden="true"></i>
+                  <div class="fw-bold small text-white">Jupyter &amp; PyCharm</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="glass-card p-3 d-flex align-items-center gap-3 h-100">
+                  <i class="fa-solid fa-chart-line text-teal fs-3" style="color:var(--accent-color)" aria-hidden="true"></i>
+                  <div class="fw-bold small text-white">Tableau</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="glass-card p-3 d-flex align-items-center gap-3 h-100">
+                  <i class="fa-brands fa-java text-teal fs-3" style="color:var(--accent-color)" aria-hidden="true"></i>
+                  <div class="fw-bold small text-white">Java &amp; JavaScript</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-5">
+      <div class="container py-4">
+        <div class="glass-card p-4 p-md-5">
+          <div class="row align-items-center g-4">
+            <div class="col-md-2 text-center text-md-start">
+              <i class="fa-regular fa-address-card display-4" style="color:var(--accent-color)" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-10">
+              <h2 class="fw-extrabold mb-3">About Andres</h2>
+              <p class="text-muted mb-0" style="line-height:1.75; font-size:1.02rem">
+                I am a data scientist with an M.S. in Data Analytics and a background working in enterprise technology environments. I build practical machine-learning solutions with an emphasis on reproducible evaluation, readable code, transparent metrics, and results that can be translated into business decisions. My current work includes NLP classification, optimization, and multi-agent simulation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-5">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <span class="text-uppercase tracking-wider small fw-bold" style="color:var(--accent-color); font-size:0.9rem">Connect</span>
+          <h2 class="h1 fw-extrabold mt-1">Get In Touch</h2>
+          <p class="text-muted mx-auto" style="max-width:500px; font-size:1rem">Feel free to reach out to discuss machine learning, data roles, or project collaborations.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4">
+            <a class="glass-card contact-link-card" href="mailto:andresv9911@gmail.com">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+              <div>
+                <div class="fw-bold text-white">Email</div>
+                <div class="text-muted small" style="font-size:0.85rem">andresv9911@gmail.com</div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a class="glass-card contact-link-card" href="https://www.linkedin.com/in/andres-vargas-T/" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+              <div>
+                <div class="fw-bold text-white">LinkedIn</div>
+                <div class="text-muted small" style="font-size:0.85rem">andres-vargas-T</div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a class="glass-card contact-link-card" href="https://github.com/andresvarga" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+              <div>
+                <div class="fw-bold text-white">GitHub</div>
+                <div class="text-muted small" style="font-size:0.85rem">andresvarga</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container text-center">
+      <p class="mb-2">&copy; <span id="y"></span> Andres Vargas. All rights reserved.</p>
+      <p class="small text-muted mb-0">Crafted with high contrast, custom styles &amp; Bootstrap. Powered by clean code.</p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<section id="about" class="py-5 border-top">
-  <div class="container">
-    <h2 class="fw-bold mb-3">About</h2>
-    <p class="muted mb-0">
-      I focus on building practical ML solutions with strong evaluation and clear communication.
-      I enjoy NLP problems, end-to-end pipelines, and turning messy datasets into reliable models.
-    </p>
-  </div>
-</section>
-
-<section id="contact" class="py-5 border-top">
-  <div class="container">
-    <h2 class="fw-bold mb-3">Contact</h2>
-    <div class="d-flex gap-3 flex-wrap">
-      <a class="btn btn-primary" href="mailto:andresv9911@gmail.com">Email</a>
-      <a class="btn btn-outline-secondary" href="https://www.linkedin.com/in/andres-vargas-T/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-outline-secondary" href="https://github.com/andresvarga" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
-</section>
-
-<footer class="py-4 border-top">
-  <div class="container small muted">
-    © <span id="y"></span> Andres Vargas. Built with Bootstrap.
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
+
 </html>
