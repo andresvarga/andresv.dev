@@ -329,6 +329,9 @@
       font-size: 0.95rem;
     }
   </style>
+
+  <!-- Umami Analytics (Privacy-friendly, Cookie-less) -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="ee3006b7-f2b8-4b0e-8479-3f2dc347fb58"></script>
 </head>
 
 <body>
@@ -371,7 +374,7 @@
             </div>
             <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
               <a class="btn btn-gradient" href="#projects">View Projects</a>
-              <a class="btn btn-glass" href="https://github.com/andresvarga" target="_blank" rel="noopener noreferrer">
+              <a class="btn btn-glass" href="https://github.com/andresvarga" target="_blank" rel="noopener noreferrer" data-umami-event="Click-Hero-GitHub">
                 <i class="fa-brands fa-github me-2" aria-hidden="true"></i>View GitHub
               </a>
             </div>
@@ -394,7 +397,7 @@
             <span class="text-uppercase tracking-wider small fw-bold" style="color:var(--accent-color); font-size:0.9rem">Selected Work</span>
             <h2 class="h1 fw-extrabold mt-1 mb-0">Data Science &amp; Machine Learning Projects</h2>
           </div>
-          <a class="btn btn-glass btn-sm" href="https://github.com/andresvarga?tab=repositories" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-glass btn-sm" href="https://github.com/andresvarga?tab=repositories" target="_blank" rel="noopener noreferrer" data-umami-event="Click-All-Repos">
             All Repositories <i class="fa-solid fa-arrow-up-right-from-square ms-2" aria-hidden="true" style="font-size:0.8rem"></i>
           </a>
         </div>
@@ -469,7 +472,7 @@
                   </div>
 
                   <div class="d-flex gap-3 flex-wrap align-items-center">
-                    <a class="btn btn-gradient btn-sm" href="https://github.com/andresvarga/Email_Classifcation" target="_blank" rel="noopener noreferrer">
+                    <a class="btn btn-gradient btn-sm" href="https://github.com/andresvarga/Email_Classifcation" target="_blank" rel="noopener noreferrer" data-umami-event="Click-Project-Phishing-Code">
                       <i class="fa-solid fa-code me-2" aria-hidden="true"></i>Source Code
                     </a>
                     <span class="text-muted small ms-2"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i> Interactive demo in development</span>
@@ -550,7 +553,7 @@
                   </div>
 
                   <div class="d-flex gap-3 flex-wrap align-items-center">
-                    <a class="btn btn-glass btn-sm" href="https://github.com/andresvarga/catan_solver" target="_blank" rel="noopener noreferrer" style="border-color: rgba(59, 130, 246, 0.3);">
+                    <a class="btn btn-glass btn-sm" href="https://github.com/andresvarga/catan_solver" target="_blank" rel="noopener noreferrer" style="border-color: rgba(59, 130, 246, 0.3);" data-umami-event="Click-Project-Catan-Code">
                       <i class="fa-brands fa-github me-2" aria-hidden="true"></i>Source Code
                     </a>
                   </div>
@@ -820,7 +823,7 @@
 
         <div class="row g-4 justify-content-center">
           <div class="col-md-4">
-            <a class="glass-card contact-link-card" href="mailto:andresv9911@gmail.com">
+            <a class="glass-card contact-link-card" href="mailto:andresv9911@gmail.com" data-umami-event="Click-Contact-Email">
               <i class="fa-regular fa-envelope" aria-hidden="true"></i>
               <div>
                 <div class="fw-bold text-white">Email</div>
@@ -829,7 +832,7 @@
             </a>
           </div>
           <div class="col-md-4">
-            <a class="glass-card contact-link-card" href="https://www.linkedin.com/in/andres-vargas-T/" target="_blank" rel="noopener noreferrer">
+            <a class="glass-card contact-link-card" href="https://www.linkedin.com/in/andres-vargas-T/" target="_blank" rel="noopener noreferrer" data-umami-event="Click-Contact-LinkedIn">
               <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
               <div>
                 <div class="fw-bold text-white">LinkedIn</div>
@@ -838,7 +841,7 @@
             </a>
           </div>
           <div class="col-md-4">
-            <a class="glass-card contact-link-card" href="https://github.com/andresvarga" target="_blank" rel="noopener noreferrer">
+            <a class="glass-card contact-link-card" href="https://github.com/andresvarga" target="_blank" rel="noopener noreferrer" data-umami-event="Click-Contact-GitHub">
               <i class="fa-brands fa-github" aria-hidden="true"></i>
               <div>
                 <div class="fw-bold text-white">GitHub</div>
@@ -854,6 +857,7 @@
   <footer>
     <div class="container text-center">
       <p class="mb-2">&copy; <span id="y"></span> Andres Vargas. All rights reserved.</p>
+      <p class="small text-muted mb-1">This site uses privacy-friendly analytics to count anonymous visits without cookies.</p>
       <p class="small text-muted mb-0">Crafted with high contrast, custom styles &amp; Bootstrap. Powered by clean code.</p>
     </div>
   </footer>
